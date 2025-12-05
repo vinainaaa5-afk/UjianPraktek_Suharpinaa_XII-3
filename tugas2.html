@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Suharpina</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts (Montserrat untuk Heading, Lato untuk Paragraf) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- CSS Kustom -->
+    <style>
+        :root {
+            --primary-blue: #0d6efd; /* Warna Biru Bootstrap */
+            --dark-blue: #0a58ca;
+            --light-gray: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            color: #333;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+
+        /* --- Styling Navbar --- */
+        .navbar {
+            background-color: white !important;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.4s ease-in-out;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-blue) !important;
+        }
+
+        .navbar-nav .nav-link {
+            color: #555 !important;
+            margin-left: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--primary-blue) !important;
+        }
+
+        /* --- Styling Hero Section --- */
+        .hero-section {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .btn-custom {
+            background-color: white;
+            color: var(--primary-blue);
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            border: 2px solid white;
+            transition: all 0.3s;
+        }
+
+        .btn-custom:hover {
+            background-color: transparent;
+            color: white;
+        }
+
+        /* --- Styling Section Umum --- */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-blue);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        /* --- Styling Keahlian --- */
+        .skill-box {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        /* --- Styling Portfolio --- */
+        .portfolio-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 30px;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .portfolio-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .card-img-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .portfolio-card:hover .card-img-overlay {
+            opacity: 1;
+        }
+
+        /* --- Styling Kontak --- */
+        #kontak {
+            background-color: var(--light-gray);
+        }
+
+        .form-control, .form-select {
+            border-radius: 0;
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+        }
+
+        /* --- Styling Footer --- */
+        footer {
+            background-color: #212529;
+            color: #aaa;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer .social-icons a {
+            color: #aaa;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        footer .social-icons a:hover {
+            color: var(--primary-blue);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- === NAVBAR === -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Portfolio.</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#beranda">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tentang">Tentang</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#keahlian">Keahlian</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#kontak">Kontak</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- === HERO SECTION === -->
+    <section id="beranda" class="hero-section">
+        <div class="container">
+            <!-- GANTI FOTO ANDA DI SINI -->
+            <img src="nai.jpg" alt="Foto Profil" class="profile-img">
+            <h1>Suharpina</h1>
+            <p>XII-3 | nanay</p>
+            <a href="#portfolio" class="btn btn-custom">Lihat portfolio</a>
+        </div>
+    </section>
+
+    <!-- === TENTANG SAYA === -->
+    <section id="tentang" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Tentang Saya</h2>
+            <div class="row">
+                <div class="col-lg-10 mx-auto text-center">
+                    <p class="lead">
+                        Halo! Saya suharpina Biasa dipanggil pina, nanay, nana, ena dll. 
+                        yang diambil dari nama belakang saya.Saya anak kesatu dari 2 bersaudara, saya seorang pelajar,
+                        saya tinggal di kampung SARKANJUT.hobi saya suka bermain juga terkadang suka olahraga tapi kadang kadang sih hehehe,
+                        saya lebih suka bermain nongkrong dari pada dirumah, tapi kadang juga suka males kalau keluar rumah.kalau dirumah suka bantuin pekerjaan rumah. cita cita saya menjadi ORANG KAYA.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === KEAHLIAN === -->
+    <section id="keahlian" class="section-padding">
+        <div class="container"
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="skill-box">
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="skill-box">
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="skill-box">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === PORTFOLIO === -->
+    <section id="portfolio" class="section-padding bg-light">
+        <div class="container">
+            <h2 class="section-title">Portfolio </h2>
+            <div class="row">
+                <!-- Proyek 1 -->
+                <div class="col-md-4">
+                    <div class="card portfolio-card">
+                        <div class="position-relative">
+                            <img src="nanaw.jpg" class="card-img-top" alt="Proyek 1">
+                            <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Proyek 2 -->
+                <div class="col-md-4">
+                    <div class="card portfolio-card">
+                        <div class="position-relative">
+                            <img src="nai.jpg" class="card-img-top" alt="Proyek 2">
+                            <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Proyek 3 -->
+                <div class="col-md-4">
+                    <div class="card portfolio-card">
+                        <div class="position-relative">
+                            <img src="naw.jpg" class="card-img-top" alt="Proyek 3">
+                            <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === KONTAK === -->
+    <section id="kontak" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Hubungi Saya</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <input type="text" class="form-control" placeholder="Nama Lengkap" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <input type="email" class="form-control" placeholder="Email Anda" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Subjek">
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="5" placeholder="Pesan Anda" required></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg">Kirim Pesan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === FOOTER === -->
+    <footer>
+        <div class="container">
+            <div class="social-icons">
+                <!-- GANTI DENGAN LINK MEDIA SOSIAL ANDA -->
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+            <hr style="border-color: #444;">
+            <p>&copy; 2025 thenanayy. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
